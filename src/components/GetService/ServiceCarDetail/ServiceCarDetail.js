@@ -2,20 +2,19 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import NavbarB from "../../Shared/NavbarB/NavbarB";
 
-const ServiceCarDetail = ({id}) => {
+const ServiceCarDetail = () => {
   const { id } = useParams();
-
   return (
     <div>
       <NavbarB />
       <h2 className="mt-20 text-center text-2xl">
-        Welcome to the Service Car Area
+        Welcome to the Service Car Area {id}
       </h2>
       <section class="text-gray-600 body-font">
         <div class="container mx-auto flex px-5 py-24 md:flex-row flex-col items-center">
           <div class="lg:flex-grow md:w-1/2 lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center">
             <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">
-              {name}
+           
             </h1>
             <p class="mb-8 leading-relaxed">
               Copper mug try-hard pitchfork pour-over freegan heirloom neutra
@@ -36,7 +35,7 @@ const ServiceCarDetail = ({id}) => {
             <img
               className="object-cover object-center rounded"
               alt="hero"
-              src={img}
+              src=""
             />
           </div>
         </div>
