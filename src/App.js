@@ -1,20 +1,24 @@
+import { Route, Routes } from "react-router-dom";
 import "./App.css";
-import Feature from "./components/Pages/Features/Feature";
-import Header from "./components/Pages/Header/Header";
-import Mechaniques from "./components/Pages/Mechaniques/Mechaniques";
-import Services from "./components/services/Services";
-import Footer from "./components/Shared/Footer/Footer";
-import NavbarB from "./components/Shared/NavbarB/NavbarB";
+import About from "./components/About/About";
+import GetService from "./components/GetService/GetService";
+import Login from "./components/Login/LoginCustom/Login";
+import NotFound from "./components/NotFound/NotFound";
+import Main from "./components/Pages/Main/Main";
+import SignUp from "./components/SignUp/SignUp";
 
 function App() {
   return (
     <div>
-  <NavbarB />
-  <Header />
-  <Feature />
-  <Services />
-  <Mechaniques />
-  <Footer />
+  <Routes>
+  <Route path="/" element={<Main />} />
+  <Route path="/home" element={<Main />} />
+  <Route path="/getting-services" element={<GetService />} />
+  <Route path="/login" element={<Login />} />
+  <Route path="/signup" element={<SignUp />} />
+  <Route path="/about" element={<About />} />
+  <Route path="*" element={<NotFound />} />
+  </Routes>
     </div>
   );
 }

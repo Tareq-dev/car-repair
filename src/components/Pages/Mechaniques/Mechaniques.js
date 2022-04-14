@@ -2,7 +2,7 @@ import React from 'react';
 
 const Mechaniques = () => {
      return (
-          <div>
+          <div id="team">
           <section class="text-gray-600 body-font mb-20">
           <div class="container px-5 py-1 mx-auto">
             <div class="flex flex-col text-center w-full mb-5">
