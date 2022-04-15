@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 const ServiceCar = ({ s }) => {
   const {id, name, price, description, img } = s;
+  
   const navigate = useNavigate()
   const navigateToDetails =(id)=>{
      navigate(`/getting-services/${id}`)
