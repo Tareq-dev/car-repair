@@ -23,7 +23,7 @@ const Services = () => {
                 <img
                   className="w-100"
                   src="https://i.ibb.co/rm1Jh68/s1.webp"
-                  alt=""
+                alt=""
                 />
                 <h2 className="title-font font-medium text-3xl text-gray-900">
                   2.7K

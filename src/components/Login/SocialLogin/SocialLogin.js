@@ -1,41 +1,46 @@
 import React from "react";
-import { useSignInWithFacebook, useSignInWithGoogle } from 'react-firebase-hooks/auth';
-import { useNavigate } from "react-router-dom";
+import {
+  useSignInWithFacebook,
+  useSignInWithGoogle,
+} from "react-firebase-hooks/auth";
+import { useLocation, useNavigate } from "react-router-dom";
 import auth from "../../../firebase.init";
 
 const SocialLogin = () => {
-     const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
-     const [signInWithFacebook, user1, loading1, error1] = useSignInWithFacebook(auth);
-     const navigate = useNavigate()
+  const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
+  const [signInWithFacebook, user1, loading1, error1] = useSignInWithFacebook(auth);
+  const navigate = useNavigate();
+  const location = useLocation();
 
-     if (error) {
-          return (
-            <div>
-              <p>Error: {error.message}</p>
-            </div>
-          );
-        }
-        if (loading||loading1) {
-          return <p>Loading...</p>;
-        }
-        if (user || user1) {
-          return (
-               navigate('/')
-          );
-        }
-        if (error || error1) {
-          return (
-            <div>
-              <p>Error: {error.message}</p>
-            </div>
-          );
-        }
-        
-        
+  let from = location.state?.from?.pathname || "/";
+  if (error) {
+    return (
+      <div>
+        <p>Error: {error.message}</p>
+      </div>
+    );
+  }
+  if (loading || loading1) {
+    return <p>Loading...</p>;
+  }
+  if (user || user1) {
+    navigate(from, { replace: true });
+  }
+  if (error || error1) {
+    return (
+      <div>
+        <p>Error: {error.message}</p>
+      </div>
+    );
+  }
+
   return (
     <div>
       <div className="flex justify-center">
-        <button onClick={() => signInWithGoogle()} className="bg-primary flex justify-center items-center px-2 py-1 rounded-lg text-white mt-2">
+        <button
+          onClick={() => signInWithGoogle()}
+          className="bg-blue-300 flex justify-center items-center px-2 py-1 rounded-lg text-black mt-2"
+        >
           <img
             className="mx-2"
             style={{ width: "30px" }}
@@ -44,7 +49,10 @@ const SocialLogin = () => {
           />
           <p>Sign In With Google</p>
         </button>
-        <button onClick={() => signInWithFacebook()} className="bg-primary flex justify-center items-center px-2 py-1 rounded-lg mx-2 text-white mt-2">
+        <button
+          onClick={() => signInWithFacebook()}
+          className="bg-blue-300 flex justify-center items-center px-2 py-1 rounded-lg mx-2 text-black mt-2"
+        >
           <img
             className="mx-2"
             style={{ width: "30px" }}

@@ -3,41 +3,39 @@ import "./SignUp.css";
 import { Button, Form } from "react-bootstrap";
 import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
 import auth from "../../firebase.init";
-import NavbarB from "../Shared/NavbarB/NavbarB";
 import { Link, useNavigate } from "react-router-dom";
 import SocialLogin from "../Login/SocialLogin/SocialLogin";
+import Navbar from "../Shared/NavbarB/NavbarB";
 
 const SignUp = () => {
   const [email, setEmail] = useState("");
+  const [agree, setAgree] = useState(false);
   const [password, setPassword] = useState("");
+  const [showError, setShowError] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [createUserWithEmailAndPassword, user, loading, error] =
-    useCreateUserWithEmailAndPassword(auth);
+  const [createUserWithEmailAndPassword, user, error] =
+    useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
   const navigate = useNavigate();
-
-  if (error) {
-    return (
-      <div>
-        <p>Error: {error.message}</p>
-      </div>
-    );
-  }
-  if (loading) {
-    return <p>Loading...</p>;
-  }
   if (user) {
     navigate("/");
   }
 
-  const handleSignIn = (e) => {
+  const handleCreateUser = (e) => {
     e.preventDefault();
     createUserWithEmailAndPassword(email, password, confirmPassword);
+    if (password !== confirmPassword) {
+      setShowError("You have to match password");
+      return;
+    }
   };
   return (
     <div>
-      <NavbarB />
-      <div className="d-flex justify-center mt-20 py-20 w-100 bg-img">
-        <Form onSubmit={handleSignIn} className="bg-glass px-24 py-10">
+      <Navbar />
+      <div className="d-flex justify-center mt-14 py-20 w-100 bg-sky-300">
+        <Form
+          onSubmit={handleCreateUser}
+          className="bg-white px-8 py-10 rounded-lg"
+        >
           <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Control
               onChange={(e) => setEmail(e.target.value)}
@@ -61,15 +59,30 @@ const SignUp = () => {
             />
           </Form.Group>
           <Form.Group className="mb-3" controlId="formBasicCheckbox">
-            <Form.Check className="text-white" type="checkbox" label="Check me out" />
+            <Form.Check
+              onClick={() => setAgree(!agree)}
+              //     className={agree ? "text-success" : "text-red-500"}
+              className="text-black"
+              type="checkbox"
+              label="Agree all term and condition"
+            />
           </Form.Group>
-          <Button variant="primary" className="text-white" type="submit">
+          <p className="text-danger bg-white mb-2 px-2">
+            {showError}
+            {error}
+          </p>
+          <Button
+            disabled={!agree}
+            variant="primary"
+            className="text-black"
+            type="submit"
+          >
             Register
           </Button>
-          <p className="text-white bg-blue-600 mt-2 px-2 rounded-lg">
+          <p className="text-black mt-2 px-2 rounded-lg">
             Already have a new account?
-            <Link className="text-white mx-2" to="/login">
-               Please Sign In to click here.
+            <Link className="text-primary mx-2" to="/login">
+              Please Sign In to click here.
             </Link>
           </p>
 
