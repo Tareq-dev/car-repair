@@ -26,14 +26,22 @@ const NavbarB = () => {
               <Nav className="me-auto mx-24">
               <Nav.Link href="/">Home</Nav.Link>
               <Nav.Link href="home#features">Features</Nav.Link>
-              <Nav.Link href="home#services">Servives</Nav.Link>
+              <Nav.Link href="home#services">Services</Nav.Link>
               <Nav.Link as={Link} to="/about">
                 About
               </Nav.Link>
-              {user?.uid ? (
+              {user ? (
+                <>
                 <Nav.Link as={Link} to="/getting-services">
                   Get Servives
                 </Nav.Link>
+                <Nav.Link as={Link} to="/addservice">
+                 Add Service
+                </Nav.Link>
+                <Nav.Link as={Link} to="/manage">
+                 Manage Service
+                </Nav.Link>
+                </>
               ) : (
                 ""
               )}

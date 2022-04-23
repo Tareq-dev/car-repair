@@ -2,9 +2,11 @@ import { createContext, useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import About from "./components/About/About";
+import AddService from "./components/AddService/AddService";
 import GetService from "./components/GetService/GetService";
 
 import Login from "./components/Login/LoginCustom/Login";
+import ManageServices from "./components/ManageServices/ManageServices";
 import NotFound from "./components/NotFound/NotFound";
 import Main from "./components/Pages/Main/Main";
 import RequireAuth from "./components/RequireAuth/RequireAuth";
@@ -30,6 +32,22 @@ function App() {
             element={
               <RequireAuth>
                 <Shipment />
+              </RequireAuth>
+            }
+          />
+          <Route
+            path="/addservice"
+            element={
+              <RequireAuth>
+                <AddService />
+              </RequireAuth>
+            }
+          />
+          <Route
+            path="/manage"
+            element={
+              <RequireAuth>
+                <ManageServices />
               </RequireAuth>
             }
           />

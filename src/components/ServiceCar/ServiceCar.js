@@ -3,7 +3,7 @@ import {  Card } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 
 const ServiceCar = ({ s }) => {
-  const {id, name, price, description, img } = s;
+  const { _id, name, price, description, img } = s;
   
   const navigate = useNavigate()
   const navigateToDetails =(id)=>{
@@ -18,7 +18,7 @@ const ServiceCar = ({ s }) => {
         <h2 className="text-center text-xl bg-blue-400 text-white">
           Price : ${price}
         </h2>
-        <button onClick={()=>navigateToDetails(id)} className="mt-3 w-100 text-center text-xl border-2 border-black bg-red-400 text-white">
+        <button onClick={()=>navigateToDetails(_id)} className="mt-3 w-100 text-center text-xl border-2 border-black bg-red-400 text-white">
           Buy Service
         </button>
       </Card.Body>
