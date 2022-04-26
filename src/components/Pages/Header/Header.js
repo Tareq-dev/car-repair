@@ -12,8 +12,8 @@ const Header = () => {
             alt="First slide"
           />
           <Carousel.Caption>
-            <h3>First slide label</h3>
-            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+            <h3 className="text-4xl font-bold">Looking for the best car repair service near you?</h3>
+            <p className='text-xl'>We has trusted & skilled car mechanics in Bangladesh. Satisfaction guaranteed. Book now.</p>
           </Carousel.Caption>
         </Carousel.Item>
         <Carousel.Item interval={500}>
@@ -23,8 +23,8 @@ const Header = () => {
             alt="Second slide"
           />
           <Carousel.Caption>
-            <h3>Second slide label</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <h3 className="text-4xl font-bold">Online automobile repair shops</h3>
+            <p className='text-xl'>providing doorstep repair services and home delivery of new and used auto parts of different late model</p>
           </Carousel.Caption>
         </Carousel.Item>
         <Carousel.Item>
@@ -34,10 +34,8 @@ const Header = () => {
             alt="Third slide"
           />
           <Carousel.Caption>
-            <h3>Third slide label</h3>
-            <p>
-              Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-            </p>
+          <h3 className="text-4xl font-bold">Hands of car mechanic in auto repair service.</h3>
+          <p className='text-xl'>Car repairing,Hand of car technician auto mechanic with a wrench working in garage. Auto mechanic working on ...</p>
           </Carousel.Caption>
         </Carousel.Item>
       </Carousel>

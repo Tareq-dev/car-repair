@@ -21,7 +21,7 @@ const Checkout = () => {
       address: event.target.address.value,
       phone: event.target.phone.value,
     };
-    fetch("http://localhost:5000/order", {
+    fetch("https://pure-chamber-87771.herokuapp.com/order", {
       method: "POST",
       body: JSON.stringify(order),
       headers: {
@@ -29,7 +29,7 @@ const Checkout = () => {
       },
     }).then((response) => {
       response.json();
-      
+
       if (response) {
         toast("You have successfully booked");
         event.target.reset();
@@ -38,7 +38,7 @@ const Checkout = () => {
   };
 
   return (
-    <div className='mb-5'>
+    <div className="mb-5">
       <div className="w-50 mx-auto">
         <h2 className="mt-14 mb-10 text-center font-sans font-bold">
           Please Order : {service.name}

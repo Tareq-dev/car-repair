@@ -5,7 +5,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import auth from "./../../../firebase.init";
 import SocialLogin from "./../SocialLogin/SocialLogin";
 import Loading from "../../Loading/Loading";
-import axios from "axios";
+import useToken from "../../../Hooks/useToken";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -16,30 +16,22 @@ const Login = () => {
     useSignInWithEmailAndPassword(auth);
   const navigate = useNavigate();
   const location = useLocation();
+  const [token] = useToken(user);
 
   let from = location.state?.from?.pathname || "/";
 
-  if (error) {
-    return (
-      <div>
-        <p>Error: {error.message}</p>
-      </div>
-    );
-  }
   if (loading) {
     return <Loading />;
   }
-  if (user) {
-    // navigate(from, { replace: true });
+  if (token) {
+    navigate(from, { replace: true });
   }
 
   const handleSignIn = async (e) => {
     e.preventDefault();
     await signInWithEmailAndPassword(email, password);
-    const { data } = await axios.post("http://localhost:5000/login", { email });
-    localStorage.setItem("accessToken", data);
-    navigate(from, { replace: true });
   };
+
   return (
     <div>
       <div className="d-flex justify-center mt-18 py-14 w-100 bg-img bg-sky-300">
@@ -79,6 +71,9 @@ const Login = () => {
           >
             Login
           </Button>
+          <p className="text-center text-red-500">
+            {error ? error.message : ""}
+          </p>
           <p className="text-blak mt-2 px-2 rounded-lg">
             Don't have an account?
             <Link className="text-primary mx-2" to="/signup">

@@ -5,12 +5,15 @@ import {
 } from "react-firebase-hooks/auth";
 import { useLocation, useNavigate } from "react-router-dom";
 import auth from "../../../firebase.init";
+import useToken from "../../../Hooks/useToken";
 
 const SocialLogin = () => {
   const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
-  const [signInWithFacebook, user1, loading1, error1] = useSignInWithFacebook(auth);
+  const [signInWithFacebook, user1, loading1, error1] =
+    useSignInWithFacebook(auth);
   const navigate = useNavigate();
   const location = useLocation();
+  const [token] = useToken(user || user1);
 
   let from = location.state?.from?.pathname || "/";
   if (error) {
@@ -23,7 +26,7 @@ const SocialLogin = () => {
   if (loading || loading1) {
     return <p>Loading...</p>;
   }
-  if (user || user1) {
+  if (token) {
     navigate(from, { replace: true });
   }
   if (error || error1) {

@@ -9,7 +9,7 @@ const AddService = () => {
 
     //post to backend
 
-    const url = `http://localhost:5000/service`;
+    const url = `https://pure-chamber-87771.herokuapp.com/service`;
     fetch(url, {
       method: "POST",
       headers: {
@@ -25,7 +25,7 @@ const AddService = () => {
 
   return (
     <div>
-      <div className="w-50 mx-auto">
+      <div className="w-50 mx-auto py-14">
         <h3 className="text-center text-3xl mt-3 mb-2">Add Service</h3>
         <form className="flex flex-col" onSubmit={handleSubmit(onSubmit)}>
           <input

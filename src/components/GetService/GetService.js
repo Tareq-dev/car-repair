@@ -6,7 +6,7 @@ import { MyService } from "../../App";
 const GetService = () => {
   const [services, setServices] = useContext(MyService);
   useEffect(() => {
-    fetch("http://localhost:5000/service")
+    fetch("https://pure-chamber-87771.herokuapp.com/service")
       .then((res) => res.json())
       .then((data) => setServices(data));
   }, [setServices]);
