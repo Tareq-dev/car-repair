@@ -5,7 +5,6 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import auth from "./../../../firebase.init";
 import SocialLogin from "./../SocialLogin/SocialLogin";
 import Loading from "../../Loading/Loading";
-import NavbarB from "../../Shared/NavbarB/NavbarB";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -39,7 +38,6 @@ const Login = () => {
   };
   return (
     <div>
-      <NavbarB />
       <div className="d-flex justify-center mt-18 py-14 w-100 bg-img bg-sky-300">
         <Form onSubmit={handleSignIn} className="bg-white px-8 mt-28 py-14 rounded-lg">
           <Form.Group className="mb-3" controlId="formBasicEmail">

@@ -1,6 +1,5 @@
 import React from "react";
-import NavbarB from "../Shared/NavbarB/NavbarB";
-import useService from "./../../Hooks/useService";
+import useService from './../../Hooks/useService';
 
 const ManageServices = () => {
   const [service, setService] = useService();
@@ -25,7 +24,6 @@ const ManageServices = () => {
   };
   return (
     <div>
-      <NavbarB />
       <div className="w-75 mx-auto">
         <h3 className="text-3xl font-bold mt-5">Manage Services</h3>
         {service.map((s) => (

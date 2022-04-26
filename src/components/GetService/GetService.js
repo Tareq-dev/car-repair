@@ -1,7 +1,6 @@
 import React, { useContext, useEffect } from "react";
 import ServiceCar from "../ServiceCar/ServiceCar";
 import "./GetService.css";
-import NavbarB from "../Shared/NavbarB/NavbarB";
 import { MyService } from "../../App";
 
 const GetService = () => {
@@ -13,7 +12,6 @@ const GetService = () => {
   }, [setServices]);
   return (
     <div>
-      <NavbarB />
       <h3 className="mt-24 text-center text-3xl font-bold">
         Get service ({services.length})
       </h3>

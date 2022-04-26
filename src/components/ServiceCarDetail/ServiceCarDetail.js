@@ -1,25 +1,18 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import Navbar from "../Shared/NavbarB/NavbarB";
+import useServiceDetails from "../../Hooks/useServiceDetails";
 
 const ServiceCarDetail = () => {
   const { id } = useParams();
+  const [service] = useServiceDetails(id);
   const navigate = useNavigate();
-  const [service, setService] = useState({});
 
-  useEffect(() => {
-    const url = `http://localhost:5000/service/${id}`;
-    fetch(url)
-    .then(res=> res.json())
-    .then(data => setService(data))
-  }, []);
-  const navigateToShipment = () => {
-    navigate("/shipment");
+  const navigateToCheckout= () => {
+    navigate(`/checkout/${id}`);
   };
 
   return (
     <div>
-      <Navbar />
       <h2 className="mt-14 text-center text-2xl">
         Welcome to the Service Car Area
       </h2>
@@ -29,9 +22,7 @@ const ServiceCarDetail = () => {
             <h1 class="sm:text-4xl text-2xl mb-2 font-medium text-blue-600">
               {service.name}
             </h1>
-            <p class="mb-1 leading-relaxed text-left">
-              {service.description}
-            </p>
+            <p class="mb-1 leading-relaxed text-left">{service.description}</p>
             <h1 class="sm:text-4xl text-2xl font-medium text-primary">
               $ {service.price}
             </h1>
@@ -46,7 +37,7 @@ const ServiceCarDetail = () => {
         </div>
         <div class="flex justify-center">
           <button
-            onClick={navigateToShipment}
+            onClick={navigateToCheckout}
             class="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg"
           >
             Place Order

@@ -1,11 +1,9 @@
 import React from 'react';
-import Navbar from '../Shared/NavbarB/NavbarB';
 
 const NotFound = () => {
      return (
           <div>
-          <Navbar />
-               <h1>404, Not Found Page</h1>
+               <h1 className="text-center text-5xl font-bold">404, Not Found Page</h1>
           </div>
      );
 };

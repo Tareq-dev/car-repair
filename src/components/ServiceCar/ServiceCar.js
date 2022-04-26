@@ -6,6 +6,7 @@ const ServiceCar = ({ s }) => {
   const { _id, name, price, description, img } = s;
   
   const navigate = useNavigate()
+  
   const navigateToDetails =(id)=>{
      navigate(`/getting-services/${id}`)
   }

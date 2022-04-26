@@ -1,10 +1,9 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-import NavbarB from "../Shared/NavbarB/NavbarB";
 
 const AddService = () => {
   const { register, handleSubmit } = useForm();
-  
+
   const onSubmit = (data) => {
     console.log(data);
 
@@ -26,7 +25,6 @@ const AddService = () => {
 
   return (
     <div>
-      <NavbarB />
       <div className="w-50 mx-auto">
         <h3 className="text-center text-3xl mt-3 mb-2">Add Service</h3>
         <form className="flex flex-col" onSubmit={handleSubmit(onSubmit)}>

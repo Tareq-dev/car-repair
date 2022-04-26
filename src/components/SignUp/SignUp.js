@@ -5,7 +5,6 @@ import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
 import auth from "../../firebase.init";
 import { Link, useNavigate } from "react-router-dom";
 import SocialLogin from "../Login/SocialLogin/SocialLogin";
-import Navbar from "../Shared/NavbarB/NavbarB";
 
 const SignUp = () => {
   const [email, setEmail] = useState("");
@@ -30,7 +29,6 @@ const SignUp = () => {
   };
   return (
     <div>
-      <Navbar />
       <div className="d-flex justify-center mt-14 py-20 w-100 bg-sky-300">
         <Form
           onSubmit={handleCreateUser}
