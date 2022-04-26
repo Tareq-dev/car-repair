@@ -5,6 +5,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import auth from "./../../../firebase.init";
 import SocialLogin from "./../SocialLogin/SocialLogin";
 import Loading from "../../Loading/Loading";
+import axios from "axios";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -26,20 +27,26 @@ const Login = () => {
     );
   }
   if (loading) {
-    return <Loading />
+    return <Loading />;
   }
   if (user) {
-    navigate(from, { replace: true });
+    // navigate(from, { replace: true });
   }
 
-  const handleSignIn = (e) => {
+  const handleSignIn = async (e) => {
     e.preventDefault();
-    signInWithEmailAndPassword(email, password);
+    await signInWithEmailAndPassword(email, password);
+    const { data } = await axios.post("http://localhost:5000/login", { email });
+    localStorage.setItem("accessToken", data);
+    navigate(from, { replace: true });
   };
   return (
     <div>
       <div className="d-flex justify-center mt-18 py-14 w-100 bg-img bg-sky-300">
-        <Form onSubmit={handleSignIn} className="bg-white px-8 mt-28 py-14 rounded-lg">
+        <Form
+          onSubmit={handleSignIn}
+          className="bg-white px-8 mt-28 py-14 rounded-lg"
+        >
           <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Control
               onChange={(e) => setEmail(e.target.value)}
